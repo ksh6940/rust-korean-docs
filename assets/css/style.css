@@ -4,6 +4,7 @@
     --text-color: #2c3e50;
     --bg-color: #f8f9fa;
     --white: #ffffff;
+    --light-gray: #e9ecef;
 }
 
 body {
@@ -15,18 +16,30 @@ body {
     color: var(--text-color);
 }
 
+.container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
 header {
     background-color: var(--secondary-color);
     color: var(--white);
-    padding: 2rem 1rem;
+    padding: 2rem 0;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2.8rem;
     letter-spacing: -1px;
+}
+
+header .subtitle {
+    font-size: 1.1rem;
+    margin-top: 0.5rem;
+    opacity: 0.8;
 }
 
 header nav {
@@ -38,7 +51,7 @@ header nav ul {
     list-style: none;
     display: flex;
     justify-content: center;
-    gap: 20px;
+    gap: 25px;
 }
 
 header nav a {
@@ -46,22 +59,144 @@ header nav a {
     text-decoration: none;
     font-weight: 600;
     transition: color 0.3s;
+    padding: 5px 10px;
+    border-radius: 4px;
 }
 
 header nav a:hover {
     color: var(--primary-color);
+    background-color: rgba(255,255,255,0.1);
 }
 
 main {
-    padding: 40px 20px;
-    margin: 40px auto;
-    max-width: 800px;
-    background: var(--white);
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    padding: 0;
 }
 
-h1, h2, h3 {
+section {
+    padding: 60px 0;
+    text-align: center;
+}
+
+section:nth-of-type(even) {
+    background-color: var(--light-gray);
+}
+
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.rust-lang.org/static/images/rust-social-preview.png') no-repeat center center/cover;
+    color: var(--white);
+    padding: 100px 0;
+}
+
+.hero h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    color: var(--white);
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 700px;
+    margin: 0 auto 30px auto;
+}
+
+.cta-buttons a {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 0 10px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: var(--white);
+    border: 2px solid var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #c23e2a;
+    border-color: #c23e2a;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--white);
+    border: 2px solid var(--white);
+}
+
+.btn-secondary:hover {
+    background-color: var(--white);
+    color: var(--primary-color);
+}
+
+.features h3, .how-to-contribute h3, .latest-updates h3 {
+    font-size: 2.2rem;
+    margin-bottom: 40px;
+    color: var(--secondary-color);
+}
+
+.feature-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.feature-item {
+    background: var(--white);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    text-align: left;
+}
+
+.feature-item h4 {
+    color: var(--primary-color);
+    font-size: 1.5rem;
+    margin-top: 0;
+}
+
+.how-to-contribute ol {
+    list-style: none;
+    padding: 0;
+    max-width: 600px;
+    margin: 30px auto;
+    text-align: left;
+}
+
+.how-to-contribute ol li {
+    background: var(--white);
+    margin-bottom: 15px;
+    padding: 20px;
+    border-left: 5px solid var(--primary-color);
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    font-size: 1.1rem;
+}
+
+.latest-updates ul {
+    list-style: none;
+    padding: 0;
+    max-width: 700px;
+    margin: 30px auto;
+}
+
+.latest-updates ul li {
+    background: var(--white);
+    margin-bottom: 10px;
+    padding: 15px 20px;
+    border-radius: 5px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
+    text-align: left;
+}
+
+.latest-updates ul li a {
+    font-weight: 500;
+}
+
+h1, h2, h3, h4 {
     color: var(--secondary-color);
 }
 
@@ -87,6 +222,7 @@ pre {
     padding: 15px;
     border-radius: 5px;
     overflow-x: auto;
+    text-align: left;
 }
 
 pre code {
@@ -103,6 +239,27 @@ footer {
     font-size: 0.9rem;
 }
 
+footer a {
+    color: var(--white);
+}
+
 footer a:hover {
     text-decoration: underline;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .hero h2 {
+        font-size: 2.2rem;
+    }
+
+    .cta-buttons a {
+        display: block;
+        margin: 10px auto;
+        max-width: 250px;
+    }
+
+    .feature-grid {
+        grid-template-columns: 1fr;
+    }
 }
